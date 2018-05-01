@@ -9,7 +9,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
       <div class="text-center">
         <h5>Filtrar</h5>
       </div>
-      <!-- <div class="d-none d-lg-block d-xl-block d-xl-none">-->
       <div>
         <h5>
           <i>

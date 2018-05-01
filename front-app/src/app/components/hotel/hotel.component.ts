@@ -13,7 +13,7 @@ import { HotelService } from '../../services/hotel.service';
     <div class="detail col-12 col-sm-12 col-sm-6 col-md-5 col-lg-5 col-xl-6">
       <h5 class="text-primary">{{hotel.name}}</h5>
       <p class="stars">
-        <i *ngFor="let star of getArrayStars(hotel)">
+        <i *ngFor="let star of getArrayStars()">
           <svg-icon src="./assets/icons/filters/star.svg"></svg-icon>
         </i>
       </p>
