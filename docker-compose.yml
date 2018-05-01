@@ -1,0 +1,38 @@
+version: '3.0'
+
+services:
+  front-app:
+    container_name: front-app
+    image: nginx
+    build:
+      context: ./front-app
+      dockerfile: .docker/nginx.dockerfile
+    volumes:
+      - ./front-app/build:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    networks:
+      - almundo   
+
+  rest-api:
+    container_name: rest-api
+    image: nodeapp
+    build:
+      context: ./rest-api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - db
+    networks:
+      - almundo
+      
+  db:
+    container_name: db
+    image: mongo
+    networks:
+      - almundo
+
+networks:
+  almundo:
+    driver: bridge

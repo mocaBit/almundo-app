@@ -1,0 +1,19 @@
+$primary-color: #002979;
+$warning-color: #e16800;
+$yellow-color: #f1f100;
+$icon-width: 20px;
+@mixin card($color: white, $margin: 10px, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+  background-color: $color;
+}
+@mixin btn($color:$primary-color){
+  background-color: $color;
+  border-color: $color;
+  color: white;
+}
+@mixin svg-icon($fill: #0679b3){
+    fill: $fill;
+    width: 20px;
+}
+

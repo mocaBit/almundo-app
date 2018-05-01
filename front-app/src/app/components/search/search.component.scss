@@ -1,0 +1,13 @@
+@import '~assets/sass/vars';
+
+.filter-cards > div{
+  @include card(white, 5px, 10px);
+  h5{
+    color: #0679b3;
+    font-size: 16px;
+    font-weight: bold
+  }
+  ul{
+    list-style-type:none;
+  }
+}

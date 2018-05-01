@@ -1,0 +1,25 @@
+@import '~assets/sass/vars';
+
+.hotel-card {
+  @include card();
+  img{
+    text-align: center !important;
+    img{
+      width: 100%;
+    }
+  }
+  .amenities svg-icon{
+    margin: 3px;
+    width: $icon-width;
+  }
+  .price{
+    border-left: dotted 2px #e8dada;
+    text-align: center !important;
+    h5{
+      color: $warning-color;
+      b{
+        font-size: 25px;
+      }
+    }
+  }
+}
