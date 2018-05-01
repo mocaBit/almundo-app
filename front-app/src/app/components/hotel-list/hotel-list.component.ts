@@ -16,20 +16,8 @@ import { HotelService } from '../../services/hotel.service';
 export class HotelListComponent implements OnInit {
 
   hotelsList: Hotel[];
-  constructor(private hotelService: HotelService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.hotelService.getHotels()
-    .subscribe(hotels => {
-      this.hotelsList = hotels;
-    });
-  }
-
-  searchHotels(params: any) {
-    this.hotelService.searchHotels(params.name,  params.stars)
-    .subscribe(hotels => {
-      this.hotelsList = hotels;
-      console.log(hotels);
-    });
+  ngOnInit() {
   }
 }
