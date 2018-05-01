@@ -7,7 +7,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   <form [formGroup]="searchForm">
     <div class="filter-cards">
       <div class="text-center">
-        <h5>Filtrar</h5>
+        <h5>Filtrar <i class="fa fa-sort-down"></i></h5>
       </div>
       <div>
         <h5>
@@ -77,7 +77,6 @@ export class SearchComponent implements OnInit {
   findHotelByStar(starNumber: number) {
     starNumber = (starNumber === -1) ? this.MAX_COUNT_STARS : starNumber;
     const stars = this.parameterSearch.stars;
-    // stars.push(starNumber);
     const index = stars.indexOf(starNumber);
     if (index !== -1) {
       stars.splice(index, 1);
@@ -85,6 +84,7 @@ export class SearchComponent implements OnInit {
       stars.push(starNumber);
     }
     this.parameterSearch.stars = stars;
+    this.parameterSearch.name = this.searchForm.value.name;
     this.searchHotel.emit(this.parameterSearch);
   }
 }

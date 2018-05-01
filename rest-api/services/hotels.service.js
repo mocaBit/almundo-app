@@ -8,7 +8,8 @@ exports.getHotels = async (query, page, limit) => {
         limit
     }
     try {
-        return await Hotel.paginate(query, options);
+        return await Hotel.find(query);
+        //return await Hotel.paginate(query, options);
     } catch (e) {
         throw Error('Ocurrio un error mientras se paginaban los Hoteles');
     }

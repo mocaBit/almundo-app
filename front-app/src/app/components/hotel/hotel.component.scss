@@ -1,6 +1,7 @@
 @import '~assets/sass/vars';
 
 .hotel-card {
+  box-shadow: 3px 3px 10px #d8d8d8;
   @include card();
   img{
     text-align: center !important;

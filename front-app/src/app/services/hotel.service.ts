@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Response } from '@angular/http';
 import { environment } from '../../environments/environment';
-import Hotel from '../store/models/hotel.model';
+import Hotel from '../models/hotel.model';
 
 @Injectable()
 export class HotelService {
@@ -20,7 +20,7 @@ export class HotelService {
   getHotels(): Observable<Hotel[]> {
     return this.http.get(this.hotelUrl)
                     .map(res  => {
-                      return res['data'].docs as Hotel[];
+                      return res['data'] as Hotel[];
                     });
   }
 
@@ -34,7 +34,7 @@ export class HotelService {
     }
     return this.http.get(this.hotelUrl, { params })
                     .map(res  => {
-                      return res['data'].docs as Hotel[];
+                      return res['data'] as Hotel[];
                     });
   }
 

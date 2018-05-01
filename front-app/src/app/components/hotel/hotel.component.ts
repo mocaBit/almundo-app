@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Hotel } from '../../store/models/hotel.model';
+import { Hotel } from '../../models/hotel.model';
 import { HotelService } from '../../services/hotel.service';
 
 @Component({

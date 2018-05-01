@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hotel } from '../../store/models/hotel.model';
+import { Hotel } from '../../models/hotel.model';
 import { HotelService } from '../../services/hotel.service';
 
 @Component({
@@ -25,18 +25,27 @@ import { HotelService } from '../../services/hotel.service';
         </div>
         <!-- H O T E L -- L I S T -->
         <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 ">
-          <div class="hotels-list" *ngIf="hotelsList">
-              <alm-hotel *ngFor="let hotel of hotelsList" [hotel]="hotel"></alm-hotel>
+          <div class="hotels-list" *ngIf="hotelsList.length > 0; else no_content">
+              <alm-hotel *ngFor="let hotel of hotelsList | paginate: { itemsPerPage: 5, currentPage: page}" [hotel]="hotel"></alm-hotel>
+              <div class="clearfix"></div>
+              <div  class="bottom-pagination">
+                  <pagination-controls
+                    (pageChange)="page = $event"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente">
+                  </pagination-controls>
+              </div>
           </div>
+          <ng-template #no_content><h1 class="no-results">La consulta no arrojó resultados...</h1></ng-template>
         </div>
-    </div>
-      <!--<alm-hotel-list [hotelsList]="hotelsList"></alm-hotel-list>-->
+      </div>
     </div>
   `,
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   @Input() hotelsList: Hotel[];
+  page: Number = 1;
   constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {

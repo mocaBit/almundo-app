@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import {NgxPaginationModule} from 'ngx-pagination';
 // Components and Services
 import { HomeComponent } from './home.component';
 import { SearchComponent } from '../../components/search/search.component';
@@ -24,7 +25,8 @@ import { HotelService } from '../../services/hotel.service';
     ReactiveFormsModule,
     AngularSvgIconModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     HotelService

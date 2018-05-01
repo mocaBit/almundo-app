@@ -5,11 +5,11 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const bluebird = require('bluebird')
-const mongoose = require('mongoose')
-const api = require('./routes/api.route')
-const dbData = require('./data/databaseData')
-const router = express.Router()
+const bluebird = require('bluebird');
+const mongoose = require('mongoose');
+const api = require('./routes/api.route');
+const dbData = require('./data/databaseData');
+const router = express.Router();
 const app = express(); 
 
 // Sets
@@ -43,8 +43,8 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 // Conexión y creación de la base de datos
-mongoose.Promise = bluebird
-mongoose.connect('mongodb://dbmongo/almundoapp')
+mongoose.Promise = bluebird;
+mongoose.connect('mongodb://127.0.0.1:27017/almundoapp')
   .then(()=> { console.log(`Coneccion exitosa a Mongodb. URL : mongodb://127.0.0.1:27017/almundoapp`)
     // Se elimina y se crea la colección con los datos de semilla
     mongoose.connection.db.dropCollection('hotels', ()=>dbData.insertData());  
