@@ -9,9 +9,9 @@ const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 const api = require('./routes/api.route');
 const dbData = require('./data/databaseData');
+const config = require("./config").get(process.env.NODE_ENV);
 const router = express.Router();
 const app = express(); 
-
 // Sets
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -44,11 +44,11 @@ app.use((err, req, res, next) => {
 });
 // Conexión y creación de la base de datos
 mongoose.Promise = bluebird;
-mongoose.connect('mongodb://dbmongo/almundoapp')
-  .then(()=> { console.log(`Coneccion exitosa a Mongodb. URL : mongodb://127.0.0.1:27017/almundoapp`)
+mongoose.connect(config.database)
+  .then(()=> { console.log(`Coneccion exitosa a Mongodb. ${config.database}`)
     // Se elimina y se crea la colección con los datos de semilla
     mongoose.connection.db.dropCollection('hotels', ()=>dbData.insertData());  
   })
-  .catch(()=> { console.log(`Error de coneccion a Mongodb. URL : mongodb://127.0.0.1:27017/almundoapp`)});
+  .catch(()=> { console.log(`Error de coneccion a Mongodb. ${config.database}`)});
 
 module.exports = app;

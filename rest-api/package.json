@@ -1,9 +1,10 @@
 {
-  "name": "almundo.restapi",
+  "name": "rest-api",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "start_dev": "SET NODE_ENV=dev & nodemon ./bin/www"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
