@@ -8,7 +8,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 // Components and Services
 import { HomeComponent } from './home.component';
 import { SearchComponent } from '../../components/search/search.component';
-import { HotelListComponent } from '../../components/hotel-list/hotel-list.component';
 import { HotelComponent } from '../../components/hotel/hotel.component';
 import { HotelService } from '../../services/hotel.service';
 
@@ -16,7 +15,6 @@ import { HotelService } from '../../services/hotel.service';
   declarations: [
     HomeComponent,
     SearchComponent,
-    HotelListComponent,
     HotelComponent
   ],
   imports: [

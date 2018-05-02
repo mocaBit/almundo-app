@@ -41,21 +41,16 @@ exports.createHotel = async (hotel) => {
 exports.updateHotel = async (hotel) => {
     const id = hotel.id;
     try{    
-        const oldHotel = await Hotel.findById(id);
-    }catch(e){
-        throw Error("Ocurrio un error mientras se buscaba el Hotel");
-    }
+        let oldHotel = await Hotel.findOne({"id":id});
 
-    if(!oldHotel){
-        return false;
-    }
-    oldHotel.name = hotel.name
-    oldHotel.stars = hotel.stars
-    oldHotel.price = hotel.price
-    oldHotel.image = hotel.image
-    oldHotel.amenities = hotel.amenities
-
-    try{
+        if(!oldHotel){
+            return false;
+        }
+        oldHotel.name =  (!hotel.name) ? hotel.name : oldHotel.name;
+        oldHotel.stars = (!hotel.stars) ? hotel.stars : oldHotel.stars;
+        oldHotel.price = (!hotel.price) ? hotel.price : oldHotel.price;
+        oldHotel.image = (!hotel.image) ? hotel.image : oldHotel.image;
+        oldHotel.amenities = (!hotel.amenities) ? hotel.amenities : oldHotel.amenities;
         const savedHotel = await oldHotel.save();
         return savedHotel;
     }catch(e){
@@ -65,9 +60,10 @@ exports.updateHotel = async (hotel) => {
 
 exports.deleteHotel = async (id) => {
     try{
-        const deleted = await Hotel.remove({_id: id});
-        if(deleted.result.n === 0){
-            throw Error("El Hotel no pude ser eliminado");
+        const deleted = await Hotel.remove({id: id});
+        console.log(deleted);
+        if(deleted.n === 0){
+            throw Error();
         }
         return deleted;
     }catch(e){

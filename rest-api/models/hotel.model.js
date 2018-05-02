@@ -7,7 +7,8 @@ const HotelSchema = new mongoose.Schema({
     stars: Number,
     price: Number,
     image: String,
-    amenities: Array
+    amenities: Array,
+    id: String
 });
 
 HotelSchema.plugin(mongoosePaginate);

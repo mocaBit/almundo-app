@@ -49,10 +49,10 @@ exports.createHotel = async (req, res, next) => {
 
 exports.updateHotel = async (req, res, next) => {
 
-    if(!req.body._id){
+    if(!req.body.id){
         return res.status(400).json({status: 400., message: "Se necesita un ID"});
     }
-    const id = req.body._id;
+    const id = req.body.id;
     const hotel = {
         id,
         name: req.body.name ? req.body.name : null,
@@ -73,7 +73,7 @@ exports.removeHotel = async (req, res, next) => {
     const id = req.params.id;
     try{
         const deleted = await HotelService.deleteHotel(id);
-        return res.status(204).json({status:204, message: "Hotel eliminado exitosamente"});
+        return res.status(200).json({status:200, message: "Hotel eliminado exitosamente"});
     }catch(e){
         return res.status(400).json({status: 400, message: e.message});
     }
