@@ -18,7 +18,7 @@ $ docker-compose up --build
 Despues, puede acceder a [http://127.0.0.1:8080](http://127.0.0.1:8080) para ver la aplicación front.
 
 ### Front-api
-Url aplicación: __[http://127.0.0.1:3000](http://127.0.0.1:3000)__
+Url aplicación:  __[http://127.0.0.1:8080](http://127.0.0.1:8080)__.
 
 Front-app está construido en Angular y consume los endpoints del rest-api utilizando los parametros name y stars para realizar las consultas que sean requeridas. 
 
@@ -34,7 +34,7 @@ La estructura lógica del proyecto es la siguiente:
 
 
 ### Rest-api
-url aplicación: __[http://127.0.0.1:8080](http://127.0.0.1:8080)__.
+url aplicación: __[http://127.0.0.1:3000/api/hotels](http://127.0.0.1:3000/api/hotels)__
 
 Rest-api es el back-end, está construido en Node y Express. Consume una base de datos no relacional (MongoDb) para luego exponer la información en sus endpoints.
 Los endpoints soportados por el api, son:
