@@ -44,7 +44,7 @@ app.use((err, req, res, next) => {
 });
 // Conexión y creación de la base de datos
 mongoose.Promise = bluebird;
-mongoose.connect('mongodb://127.0.0.1:27017/almundoapp')
+mongoose.connect('mongodb://dbmongo/almundoapp')
   .then(()=> { console.log(`Coneccion exitosa a Mongodb. URL : mongodb://127.0.0.1:27017/almundoapp`)
     // Se elimina y se crea la colección con los datos de semilla
     mongoose.connection.db.dropCollection('hotels', ()=>dbData.insertData());  
