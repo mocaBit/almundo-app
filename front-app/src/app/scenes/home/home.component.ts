@@ -44,8 +44,7 @@ import { HotelService } from '../../services/hotel.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input() hotelsList: Hotel[];
-  page: Number = 1;
+  @Input() hotelsList: Hotel[] = [];
   constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {
@@ -59,8 +58,6 @@ export class HomeComponent implements OnInit {
     this.hotelService.searchHotels(params.name,  params.stars)
     .subscribe(hotels => {
       this.hotelsList = hotels;
-      console.log('hotels', hotels);
     });
   }
-
 }

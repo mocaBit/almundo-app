@@ -61,7 +61,6 @@ exports.updateHotel = async (hotel) => {
 exports.deleteHotel = async (id) => {
     try{
         const deleted = await Hotel.remove({id: id});
-        console.log(deleted);
         if(deleted.n === 0){
             throw Error();
         }

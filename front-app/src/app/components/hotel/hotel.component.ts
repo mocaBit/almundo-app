@@ -42,7 +42,7 @@ export class HotelComponent implements OnInit {
   }
 
   getArrayStars(): Array<number> {
-    return Array.from(new Array(this.hotel.stars), (val, index) => index);
+    return Array.from(new Array(this.hotel.stars).keys());
   }
 
 }

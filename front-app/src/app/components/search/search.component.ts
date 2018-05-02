@@ -18,7 +18,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
         <div class="input-group">
           <input formControlName="name" required type="text" class="form-control form-control-sm" placeholder="Ingrese el nombre del Hotel">
           <div class="input-group-append">
-            <button (click)="findHotelByName()" class="btn btn-primary" type="button">Aceptar</button>
+            <button (click)="findHotel()" class="btn btn-primary" type="button">Aceptar</button>
           </div>
         </div>
       </div>
@@ -28,17 +28,19 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
         </h5>
         <ul>
           <li>
-            <input type="checkbox" (click)="findHotelByStar(-1)">
+            <input type="checkbox" (click)="findHotelByAllStar()">
             <b> Todas las Estrellas</b>
           </li>
-          <li *ngFor="let i of getArrayStars()">
-            <b *ngIf="i > 0">
-              <input type="checkbox" (click)="findHotelByStar(i)">
-              <i *ngFor="let n of getArrayStars()" class="stars">
-                <svg-icon *ngIf="n<i" src="./assets/icons/filters/star.svg"></svg-icon>
-              </i>
-            </b>
-          </li>
+          <div *ngIf="!isAllStars">
+            <li *ngFor="let i of getArrayStars()">
+              <b *ngIf="i > 0">
+                <input type="checkbox" (click)="findHotelByStar(i)">
+                <i *ngFor="let n of getArrayStars()" class="stars">
+                  <svg-icon *ngIf="n<i" src="./assets/icons/filters/star.svg"></svg-icon>
+                </i>
+              </b>
+            </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -50,6 +52,7 @@ export class SearchComponent implements OnInit {
 
   @Output() searchHotel: EventEmitter<any> = new EventEmitter();
   searchForm: FormGroup;
+  isAllStars = false;
 
   MAX_COUNT_STARS = 5;
   parameterSearch = {
@@ -66,25 +69,30 @@ export class SearchComponent implements OnInit {
   }
 
   getArrayStars(): Array<number> {
-    return Array.from(new Array(this.MAX_COUNT_STARS), (val, index) => index).reverse();
+    return Array.from(new Array(this.MAX_COUNT_STARS + 1).keys())
+                .reverse();
   }
 
-  findHotelByName() {
+  findHotel() {
     this.parameterSearch.name = this.searchForm.value.name;
     this.searchHotel.emit(this.parameterSearch);
+  }
+
+  findHotelByAllStar() {
+    this.isAllStars = !this.isAllStars;
+    this.parameterSearch.stars = (this.isAllStars)
+                                  ? this.getArrayStars()
+                                  : new Array();
+    this.findHotel();
   }
 
   findHotelByStar(starNumber: number) {
-    starNumber = (starNumber === -1) ? this.MAX_COUNT_STARS : starNumber;
     const stars = this.parameterSearch.stars;
     const index = stars.indexOf(starNumber);
-    if (index !== -1) {
-      stars.splice(index, 1);
-    } else {
-      stars.push(starNumber);
-    }
+    (index !== -1)
+      ? stars.splice(index, 1)
+      : stars.push(starNumber);
     this.parameterSearch.stars = stars;
-    this.parameterSearch.name = this.searchForm.value.name;
-    this.searchHotel.emit(this.parameterSearch);
+    this.findHotel();
   }
 }

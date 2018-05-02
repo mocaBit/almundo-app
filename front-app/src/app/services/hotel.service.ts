@@ -26,6 +26,7 @@ export class HotelService {
 
   searchHotels(name: string, stars: Array<any>): Observable<Hotel[]> {
     const params = {name, stars: JSON.stringify(stars)};
+    console.log('Parameter request', params);
     if (name.length === 0) {
       delete params.name;
     }
