@@ -53,8 +53,8 @@ export class SearchComponent implements OnInit {
   @Output() searchHotel: EventEmitter<any> = new EventEmitter();
   searchForm: FormGroup;
   isAllStars = false;
-
   MAX_COUNT_STARS = 5;
+
   parameterSearch = {
     name : '',
     stars : []
@@ -80,9 +80,7 @@ export class SearchComponent implements OnInit {
 
   findHotelByAllStar() {
     this.isAllStars = !this.isAllStars;
-    this.parameterSearch.stars = (this.isAllStars)
-                                  ? this.getArrayStars()
-                                  : new Array();
+    this.parameterSearch.stars = new Array();
     this.findHotel();
   }
 
