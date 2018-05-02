@@ -14,6 +14,7 @@ $ git clone https://github.com/moises2011/almundo-app.git
 $ cd almundo-app
 $ docker-compose up --build
 ```
+  > El comando "docker-compose" puede tomar varios minutos, dependiendo de conexión a internet, mientras descarga y compila las imágenes necesarias.
 
 Despues, puede acceder a [http://127.0.0.1:8080](http://127.0.0.1:8080) para ver la aplicación front.
 
