@@ -24,13 +24,13 @@ Front-app está construido en Angular y consume los endpoints del rest-api utili
 
 La estructura lógica del proyecto es la siguiente:
 	
-    [-] Scenes 	   - Pantallas
-    	[+] Home     - Página principal
+    [-] Scenes - Pantallas
+    	[+] Home - Página principal
     [-] Components - Componentes
-    	[+] Hotel    - Detalle de hotel
-        [+] Search   - Búsqueda
-    [+] Services   - Servicios
-    [+] Models     - Modelos
+    	[+] Hotel - Detalle de hotel
+        [+] Search - Búsqueda
+    [+] Services - Servicios
+    [+] Models - Modelos
 
 
 ### Rest-api
